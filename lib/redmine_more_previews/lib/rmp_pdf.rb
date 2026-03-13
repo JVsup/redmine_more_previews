@@ -31,7 +31,7 @@ module RedmineMorePreviews
           pdf.alias_nb_pages
           options = {}
           options[:format] = ::Setting.date_format unless ::Setting.date_format.blank?
-          pdf.footer_date = ::I18n.l(User.current.today.to_date, options)
+          pdf.footer_date = ::I18n.l(User.current.today.to_date, **options)
           pdf.add_page
           
           pdf.SetFontStyle('B',11)
@@ -48,13 +48,18 @@ module RedmineMorePreviews
           
           imgfile = "emoji#{rand(1..5)}.png"
           imgpath = File.join(__dir__, "conversion", imgfile)
-          atta = Attachment.create(
-            :file           =>File.open(imgpath),
-            :filename       =>imgfile, 
-            :author         =>User.current
-          )
-          buf  = "<p>random image <img src='#{imgfile}'></p>"
-          pdf.RDMwriteFormattedCell(190,5,'','', buf, [atta], 0)
+          if File.exist?(imgpath)
+            atta = Attachment.create(
+              :file           =>File.open(imgpath),
+              :filename       =>imgfile, 
+              :author         =>User.current
+            )
+            buf  = "<p>random image <img src='#{imgfile}'></p>"
+            pdf.RDMwriteFormattedCell(190,5,'','', buf, [atta], 0)
+          else
+            buf  = "<p>Debug image not found: #{imgfile}</p>"
+            pdf.RDMMultiCell(190, 5, buf)
+          end
           
           locals.each do |key, value|
             buf = "#{key}: #{value}"
