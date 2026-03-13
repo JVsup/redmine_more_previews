@@ -1,5 +1,17 @@
 # redmine_more_previews
 
+---
+
+## FORK NOTES
+
+- most pull requests from upstream are integrated plus outside fixes
+- plugin is confirmed to work in redmine 6.0.5 based on https://github.com/sameersbn/docker-redmine
+- libreoffice is needed to be installed in the container (duh)
+- other critical libraries and bins to add into image: `imagemagick pandoc libxinerama1 libnss3 libfontconfig1 libxrender1 libxext6 libcairo2 libcups2 libdbus-1-3 libsm6 libice6 libx11-xcb1 libssl3`
+- edit `/home/redmine/redmine/config/environment.rb` and add path (mind the correct version/path to libreoffice bins), othervise redmine cant find soffice `ENV['PATH'] = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/libreoffice25.8/program"`
+
+---
+
 Redmine plugin to preview various file types in redmine's preview pane. Works for issue attachments, documents module, files module and repositories. This plugin is designed to work with own plugins. That is plugins for plugins.
 To preview files this plugin converts the previewed file content to either
  - pdf
