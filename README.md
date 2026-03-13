@@ -172,7 +172,7 @@ You can enable to any **existing** project from /projects/[any-project]/settings
 
 Native speakers: please help to improve localizations
 
-### Change-Log* 
+### Change-Log
 
 **6.0.5**
  - Forked version
@@ -180,6 +180,8 @@ Native speakers: please help to improve localizations
  - added bulk actions in libre to enable/disable all mime types and group conversion selector.
  - The plugin is confirmed to work in Redmine 6.0.5 container (based on https://github.com/sameersbn/docker-redmine ). Probably will work elsewhere too. YMMV.
  - Plugin version set to 6.0.5 to match corresponding redmine release
+
+ ---
 
 **5.0.8**  
   - fixed File.exists? to File.exist?
