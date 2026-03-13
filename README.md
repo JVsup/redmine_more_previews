@@ -5,9 +5,9 @@
 ## FORK NOTES
 
 - Most pull requests from upstream and outside fixes have been integrated.
-- The plugin is confirmed to work in Redmine 6.0.5 (based on sameersbn/docker-redmine).
+- The plugin is confirmed to work in Redmine 6.0.5 (based on https://github.com/sameersbn/docker-redmine ).
 - LibreOffice must be installed in the container.
-- The following critical libraries and binaries must also be added to the image: imagemagick pandoc libxinerama1 libnss3 libfontconfig1 libxrender1 libxext6 libcairo2 libcups2 libdbus-1-3 libsm6 libice6 libx11-xcb1 libssl3
+- The following critical libraries and binaries must also be added to the image: `imagemagick pandoc libxinerama1 libnss3 libfontconfig1 libxrender1 libxext6 libcairo2 libcups2 libdbus-1-3 libsm6 libice6 libx11-xcb1 libssl3`
 - Edit `/home/redmine/redmine/config/environment.rb` to include the LibreOffice path so Redmine can find the soffice binary (adjust the path to match your specific version): `ENV['PATH'] = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/libreoffice25.8/program"`
 
 ---
