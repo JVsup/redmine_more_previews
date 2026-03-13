@@ -5,10 +5,12 @@
 ## FORK NOTES
 
 - Most pull requests from upstream and outside fixes have been integrated.
-- The plugin is confirmed to work in Redmine 6.0.5 (based on https://github.com/sameersbn/docker-redmine ).
-- LibreOffice must be installed in the container.
+- Bulk actions in libre to enable/disable all mime types and group conversion selector.
+- The plugin is confirmed to work in Redmine 6.0.5 container (based on https://github.com/sameersbn/docker-redmine ).
+- LibreOffice must be installed in the container (I am using oficial deb packages https://ftp.bme.hu/pub/mirrors/tdf/libreoffice/stable/25.8.5/deb/x86_64/LibreOffice_25.8.5_Linux_x86-64_deb.tar.gz ).
 - The following critical libraries and binaries must also be added to the image: `imagemagick pandoc libxinerama1 libnss3 libfontconfig1 libxrender1 libxext6 libcairo2 libcups2 libdbus-1-3 libsm6 libice6 libx11-xcb1 libssl3`
 - Edit `/home/redmine/redmine/config/environment.rb` to include the LibreOffice path so Redmine can find the soffice binary (adjust the path to match your specific version): `ENV['PATH'] = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/libreoffice25.8/program"`
+- Plugin version set to 6.0.5 to match corresponding redmine release
 
 ---
 
@@ -171,6 +173,13 @@ You can enable to any **existing** project from /projects/[any-project]/settings
 Native speakers: please help to improve localizations
 
 ### Change-Log* 
+
+**6.0.5**
+ - Forked version
+ - added/fixed - most pull requests from upstream and outside fixes have been integrated.
+ - added bulk actions in libre to enable/disable all mime types and group conversion selector.
+ - The plugin is confirmed to work in Redmine 6.0.5 container (based on https://github.com/sameersbn/docker-redmine ). Probably will work elsewhere too. YMMV.
+ - Plugin version set to 6.0.5 to match corresponding redmine release
 
 **5.0.8**  
   - fixed File.exists? to File.exist?

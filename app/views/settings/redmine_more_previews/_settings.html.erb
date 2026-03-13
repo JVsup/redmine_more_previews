@@ -80,6 +80,28 @@
     </div>
     <hr>
   <% end %>
+
+  <% if converter.id == :libre && converter.mime_types.any? %>
+    <fieldset style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #ddd;">
+      <legend><strong>Bulk actions</strong></legend>
+      <p>
+        <label for="toggle_all_<%= converter.id %>">Toggle all extensions</label>
+        <input type="checkbox" id="toggle_all_<%= converter.id %>" class="toggle-all-extensions" data-converter-id="<%= converter.id %>" />
+      </p>
+      <p>
+        <label for="bulk_format_<%= converter.id %>">Bulk format selector</label>
+        <select id="bulk_format_<%= converter.id %>" class="bulk-format-selector" data-converter-id="<%= converter.id %>">
+          <option value="">-- Select --</option>
+          <option value="html">html</option>
+          <option value="pdf">pdf</option>
+          <option value="png">png</option>
+          <option value="jpg">jpg</option>
+          <option value="txt">txt</option>
+        </select>
+      </p>
+    </fieldset>
+  <% end %>
+
   <% converter.mime_types.each do |mime_type, opts| %>
     <div class="<%= if settings.dig("converter", "#{converter.id}", "mime_types", "#{mime_type}", "active") == "1" && RedmineMorePreviews::Converter.mime_doublette?(converter, mime_type); 'flash warning'; end %>">
       <p>
@@ -91,3 +113,30 @@
   </div>
 </fieldset>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    
+    $('.toggle-all-extensions').on('change', function() {
+      var isChecked = $(this).is(':checked');
+      var converterId = $(this).data('converter-id');
+      var selector = 'input[name^="settings[converter][' + converterId + '][mime_types]"][name$="[active]"]';
+      $(selector).prop('checked', isChecked);
+    });
+
+    $('.bulk-format-selector').on('change', function() {
+      var selectedFormat = $(this).val();
+      var converterId = $(this).data('converter-id');
+      if (selectedFormat !== "") {
+        var selector = 'select[name^="settings[converter][' + converterId + '][mime_types]"][name$="[format]"]';
+        $(selector).each(function() {
+          if ($(this).find('option[value="' + selectedFormat + '"]').length > 0) {
+            $(this).val(selectedFormat);
+          }
+        });
+        $(this).val('');
+      }
+    });
+
+  });
+</script>

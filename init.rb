@@ -3,6 +3,7 @@
 
 # Redmine plugin to preview various file types in redmine's preview pane
 #
+# Copyright © 2026 jvsup (fork and modifications) <https://github.com/JVsup>
 # Copyright © 2018 -2022 Stephan Wenzel <stephan.wenzel@drwpatent.de>
 #
 # This program is free software; you can redistribute it and/or
@@ -118,16 +119,22 @@
 #       - fixed long standing issue with links in zippy's inline zip file content tables
 # 5.0.9 
 #       - runs on Redmine 6.x
+# 6.0.5
+#       - Forked version
+#       - added/fixed - most pull requests from upstream and outside fixes have been integrated.
+#       - added bulk actions in libre to enable/disable all mime types and group conversion selector.
+#       - The plugin is confirmed to work in Redmine 6.0.5 container (based on https://github.com/sameersbn/docker-redmine ). Probably will work elsewhere too. YMMV.
+#       - Plugin version set to 6.0.5 to match corresponding redmine release
 #-----------------------------------------------------------------------------------------
 # Register plugin
 #-----------------------------------------------------------------------------------------
 Redmine::Plugin.register :redmine_more_previews do
   name         'Redmine More Previews'
-  author       'Stephan Wenzel'
+  author       'jvsup (Forked from Stephan Wenzel)'
   description  'Preview various file types in redmine\'s preview pane'
-  version      '5.0.9'
-  url          'https://github.com/HugoHasenbein/redmine_more_previews'
-  author_url   'https://github.com/HugoHasenbein/redmine_more_previews'
+  version      '6.0.5'
+  url          'https://github.com/jvsup/redmine_more_previews'
+  author_url   'https://github.com/jvsup/redmine_more_previews'
   
   requires_redmine(:version_or_higher => '4')
   
