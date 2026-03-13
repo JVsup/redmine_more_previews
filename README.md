@@ -97,7 +97,7 @@ NilText lets you see, which data are available for a file conversion. NilText no
 
 `bundle install`
 
-to install necessary gems. Install LibreOfiice (for Libre) and/or Pandoc for (for Mark)
+to install necessary gems. Install LibreOffice (for Libre) and/or Pandoc for (for Mark)
 
 3. restart server f.i.  
 
